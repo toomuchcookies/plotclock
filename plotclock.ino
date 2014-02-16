@@ -29,13 +29,12 @@
 #define SERVORIGHTNULL 960
 
 // lift positions of lifting servo
-#define LIFT0 1080// on drawing surface
-#define LIFT1 925// between numbers
-#define LIFT2 725
-// going towards sweeper
+#define LIFT0 1190// on drawing surface
+#define LIFT1 1000// between numbers
+#define LIFT2 900// going towards sweeper
 
 // speed of liftimg arm, higher is slower
-#define LIFTSPEED 1500
+#define LIFTSPEED 2000
 
 // servo width:
 
@@ -66,7 +65,7 @@ int last_min = 0;
 void setup() 
 { 
   // Set current time
-  setTime(19,24,0,0,0,0);
+  setTime(9,03,0,0,0,0);
 
   drawTo(75, 44);
   lift(1);
@@ -89,7 +88,7 @@ void loop()
     if (!servo2.attached()) servo2.attach(10);
     if (!servo3.attached()) servo3.attach(11);
 
-    lift(0);
+    lift(2);
 
     hour();
     while ((i+1)*10 <= hour())
@@ -97,10 +96,10 @@ void loop()
       i++;
     }
 
-    number(3, 3, 111, 1);
-    number(5, 25, i, 0.9);
-    number(19, 25, (hour()-i*10), 0.9);
-    number(28, 25, 11, 0.9);
+    //number(3, 3, 111, 1);
+    number(3, 22, i, 0.9);
+    number(17, 23, (hour()-i*10), 0.9);
+    number(28, 24, 11, 0.9);
 
     i=0;
     while ((i+1)*10 <= minute())
@@ -108,7 +107,7 @@ void loop()
       i++;
     }
     number(34, 25, i, 0.9);
-    number(48, 25, (minute()-i*10), 0.9);
+    number(48, 26, (minute()-i*10), 0.9);
     lift(2);
     drawTo(75, 47.5);
     lift(1);
@@ -204,7 +203,7 @@ void number(float bx, float by, int num, float scale) {
   case 111:
     //lift(2);
     //drawTo(75, 47.5);
-    lift(0);
+    lift(1);
     //speed = 0;
     drawTo(75, 43);
     drawTo(65, 43);
